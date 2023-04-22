@@ -15,6 +15,17 @@ export class App extends Component {
     ],
     filter: '',
   };
+  componentDidMount() {
+    this.setState({
+      contacts:
+        JSON.parse(localStorage.getItem('contacts')) || this.state.contacts,
+    });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   handleContactSubmit = (newName, number) => {
     if (this.state.contacts.some(({ name }) => name === newName)) {
