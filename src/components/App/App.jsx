@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { Contacts } from '../PhoneBook/Contacts/Contacts';
 import { Filter } from '../PhoneBook/Filter/Filter';
 import { Container, HeroTitle, ContactsTitle } from './App.styled';
+const LS_CONTACTS_KEY = 'Contacts';
 
 export class App extends Component {
   state = {
@@ -18,12 +19,16 @@ export class App extends Component {
   componentDidMount() {
     this.setState({
       contacts:
-        JSON.parse(localStorage.getItem('contacts')) || this.state.contacts,
+        JSON.parse(localStorage.getItem(LS_CONTACTS_KEY)) ||
+        this.state.contacts,
     });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      localStorage.setItem(
+        LS_CONTACTS_KEY,
+        JSON.stringify(this.state.contacts)
+      );
     }
   }
 
