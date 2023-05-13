@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+// import { persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
 
 const initialState = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -7,20 +9,30 @@ const initialState = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-export const contactsSlice = createSlice({
+// const persistConfig = {
+//   key: 'Contacts',
+//   storage,
+//   serialize: JSON.stringify,
+//   deserialize: JSON.parse,
+// };
+
+const contactsSlice = createSlice({
   name: 'Contacts',
   initialState,
   reducers: {
-    addContact: (state, action) => {
+    addContact(state, action) {
       state.push(action.payload);
     },
-    deleteContact: (state, action) => {
-      return state.filter(contact => contact.id !== action.payload);
+    deleteContact(state, action) {
+      state.filter(contact => contact.id !== action.payload);
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { addContact, deleteContact } = contactsSlice.actions;
+// export const contactsReducer = persistReducer(
+//   persistConfig,
+//   contactsSlice.reducer
+// );
 
+export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
