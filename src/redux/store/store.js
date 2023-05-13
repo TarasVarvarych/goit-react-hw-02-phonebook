@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-  key: 'filter',
+  key: 'root',
   storage,
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
