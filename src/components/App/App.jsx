@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact, deleteContact } from 'redux/contactsSlice/contactsSlice';
 import { setFilter } from 'redux/filterSlice/filterSlice';
 
-// const LS_CONTACTS_KEY = 'Contacts';
-
 export function App() {
   const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
