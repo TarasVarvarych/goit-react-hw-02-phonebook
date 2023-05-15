@@ -1,23 +1,31 @@
 import { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { addContact, deleteContact } from 'redux/contactsSlice/contactsSlice';
-
-import PropTypes from 'prop-types';
 import {
   ContactFormEl,
   FormLabel,
   FormInput,
   AddContactBtn,
 } from './ContactForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+import { nanoid } from '@reduxjs/toolkit';
+import { addContact } from 'redux/contactsSlice/contactsSlice';
 
-export function ContactForm({ onSubmit }) {
-  const [name, setName] = useState('');
+export function ContactForm() {
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+
+  const [contactName, setContactName] = useState('');
   const [number, setNumber] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(name, number);
-    setName('');
+    if (contacts.some(({ name }) => name === contactName)) {
+      window.alert(`${contactName} is already in your contacts`);
+      return;
+    }
+    dispatch(addContact({ name: contactName, number, id: nanoid() }));
+
+    setContactName('');
     setNumber('');
     e.target.reset();
   };
@@ -26,7 +34,7 @@ export function ContactForm({ onSubmit }) {
     const { name } = e.target;
     switch (name) {
       case 'name':
-        setName(e.target.value);
+        setContactName(e.target.value);
         break;
       case 'number':
         setNumber(e.target.value);
@@ -44,7 +52,7 @@ export function ContactForm({ onSubmit }) {
           onChange={handleInputChange}
           type="text"
           name="name"
-          value={name}
+          value={contactName}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
@@ -67,7 +75,3 @@ export function ContactForm({ onSubmit }) {
     </ContactFormEl>
   );
 }
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
