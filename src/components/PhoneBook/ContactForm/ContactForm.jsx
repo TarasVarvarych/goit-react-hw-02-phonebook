@@ -8,7 +8,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import { nanoid } from '@reduxjs/toolkit';
-import { addContact } from 'redux/contactsSlice/contactsSlice';
+import { addContact } from 'redux/contactsAPI/addContact';
+// import { addContact } from 'redux/contactsSlice/contactsSlice';
 
 export function ContactForm() {
   const contacts = useSelector(getContacts);
@@ -23,7 +24,13 @@ export function ContactForm() {
       window.alert(`${contactName} is already in your contacts`);
       return;
     }
-    dispatch(addContact({ name: contactName, number, id: nanoid() }));
+    dispatch(
+      addContact({
+        name: contactName,
+        phone: number,
+        id: nanoid(),
+      })
+    );
 
     setContactName('');
     setNumber('');
