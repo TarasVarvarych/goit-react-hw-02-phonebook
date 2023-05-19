@@ -1,12 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from '../contactsAPI';
 import {
+  addContact,
+  deleteContact,
+  fetchContacts,
   handleDeleteFulfilled,
   handleGetFulfilled,
   handlePending,
   handleAddFulfilled,
   handleRejected,
-} from 'redux/contactsAPI/handlers';
+} from '../contactsAPI';
+// import {
+//   handleDeleteFulfilled,
+//   handleGetFulfilled,
+//   handlePending,
+//   handleAddFulfilled,
+//   handleRejected,
+// } from 'redux/contactsAPI/handlers';
 
 const initialState = {
   items: [],
