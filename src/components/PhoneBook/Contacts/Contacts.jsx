@@ -21,10 +21,6 @@ export function Contacts() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const handleDelete = id => {
-    dispatch(deleteContact(id));
-  };
-
   return (
     <ContactList>
       {filteredContacts.map(({ name, phone, id }) => (
@@ -33,7 +29,7 @@ export function Contacts() {
           <DeleteButton
             type="button"
             onClick={() => {
-              handleDelete(id);
+              dispatch(deleteContact(id));
             }}
           >
             Delete

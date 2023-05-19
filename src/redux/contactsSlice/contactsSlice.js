@@ -9,13 +9,6 @@ import {
   handleAddFulfilled,
   handleRejected,
 } from '../contactsAPI';
-// import {
-//   handleDeleteFulfilled,
-//   handleGetFulfilled,
-//   handlePending,
-//   handleAddFulfilled,
-//   handleRejected,
-// } from 'redux/contactsAPI/handlers';
 
 const initialState = {
   items: [],
