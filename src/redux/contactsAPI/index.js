@@ -1,4 +1,2 @@
-export * from './addContact';
-export * from './deleteContact';
-export * from './fetchContacts';
+export * from './contactsApi';
 export * from './handlers';
