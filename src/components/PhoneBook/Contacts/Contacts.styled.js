@@ -31,3 +31,20 @@ export const ContactName = styled.span`
   font-size: 24px;
   font-weight: 500;
 `;
+
+export const ChangeButton = styled.button`
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 15px;
+
+  background-color: #7da2a9;
+  color: white;
+  font-weight: 700;
+  &:hover {
+    background-color: black;
+    color: #fff;
+    scale: 1.05;
+  }
+`;

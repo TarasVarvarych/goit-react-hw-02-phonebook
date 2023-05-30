@@ -4,6 +4,7 @@ import {
   DeleteButton,
   ContactItem,
   ContactName,
+  ChangeButton,
 } from './Contacts.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
@@ -20,11 +21,18 @@ export function Contacts() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const handleChangeContact = () => {
+    console.log('click');
+  };
+
   return (
     <ContactList>
       {filteredContacts.map(({ name, number, id }) => (
         <ContactItem key={id}>
           <ContactName>{name}</ContactName> : {number}
+          <ChangeButton type="button" onClick={handleChangeContact}>
+            Change
+          </ChangeButton>
           <DeleteButton
             type="button"
             onClick={() => {
