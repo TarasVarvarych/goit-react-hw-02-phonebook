@@ -10,19 +10,21 @@ import { Loader } from 'components/Loader/Loader';
 const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
+const HomePage = lazy(() => import('../../pages/HomePage'));
 
 export function App() {
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoading } = useAuth();
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return isRefreshing ? (
+  return isRefreshing || isLoading ? (
     <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
+        <Route path="/" element={<HomePage />} index />
         <Route
           path="/contacts"
           element={

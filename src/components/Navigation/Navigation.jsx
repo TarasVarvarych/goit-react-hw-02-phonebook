@@ -9,6 +9,9 @@ export function Navigation() {
   return (
     <nav>
       <NavList>
+        <li>
+          <NavigationLink to="/">Home</NavigationLink>
+        </li>
         {isLoggedIn ? (
           <>
             <li>

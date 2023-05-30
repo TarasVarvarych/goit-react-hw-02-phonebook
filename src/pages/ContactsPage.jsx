@@ -1,12 +1,11 @@
-import { ContactsTitle, HeroTitle } from 'components/App/App.styled';
 import { ContactForm } from 'components/PhoneBook/ContactForm/ContactForm';
 import { Contacts } from 'components/PhoneBook/Contacts/Contacts';
 import { Filter } from 'components/PhoneBook/Filter/Filter';
+import styled from 'styled-components';
 
 function ContactsPage() {
   return (
     <>
-      <HeroTitle>PhoneBook</HeroTitle>
       <ContactForm />
       <Filter />
       <ContactsTitle>Contacts</ContactsTitle>
@@ -14,5 +13,10 @@ function ContactsPage() {
     </>
   );
 }
+
+const ContactsTitle = styled.h2`
+  letter-spacing: 0.4rem;
+  font-family: serif;
+`;
 
 export default ContactsPage;
