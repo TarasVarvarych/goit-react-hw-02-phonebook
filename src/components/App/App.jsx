@@ -2,11 +2,10 @@ import { Routes, Route } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/authApi/operations';
-import { PrivateRoute } from 'components/Routes/PrivateRoute';
-import { RestrictedRoute } from 'components/Routes/RestrictedRoute';
 import { useAuth } from 'hooks/useAuth';
 import { Loader } from 'components/Loader/Loader';
+import { refreshUser } from 'redux/authApi';
+import { PrivateRoute, RestrictedRoute } from 'components/Routes';
 const ContactsPage = lazy(() =>
   import('../../pages/ContactsPage/ContactsPage')
 );

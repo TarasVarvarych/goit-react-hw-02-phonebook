@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logIn } from 'redux/authApi/operations';
 import { FormInput, FormLabel, LogInBtn, LoginForm } from './LoginPage.styled';
+import { logIn } from 'redux/authApi';
 
 function LoginPage() {
   const dispatch = useDispatch();

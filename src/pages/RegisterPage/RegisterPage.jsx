@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { signUp } from 'redux/authApi/operations';
 import {
   FormInput,
   FormLabel,
   RegisterBtn,
   RegisterForm,
 } from './RegisterPage.styled';
+import { signUp } from 'redux/authApi';
 
 function RegisterPage() {
   const dispatch = useDispatch();
