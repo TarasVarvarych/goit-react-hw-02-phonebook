@@ -17,7 +17,6 @@ export function Contact({ name, number, id }) {
   const [phoneNumber, setPhoneNumber] = useState(number);
   const [targetId, setTargetId] = useState(null);
   const dispatch = useDispatch();
-
   const handleEditContact = id => {
     setIsEdit(prevState => !prevState);
     setTargetId(id);
