@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logIn } from 'redux/authApi/operations';
-import styled from 'styled-components';
+import { FormInput, FormLabel, LogInBtn, LoginForm } from './LoginPage.styled';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -35,43 +35,4 @@ function LoginPage() {
   );
 }
 
-const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const FormLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: 500;
-`;
-const FormInput = styled.input`
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  background-color: #7da2a9;
-  border-radius: 5px;
-  border: transparent;
-  outline: none;
-  padding: 10px;
-  font-size: 20px;
-`;
-const LogInBtn = styled.button`
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  background-color: black;
-  color: white;
-  font-weight: 700;
-  margin-top: 15px;
-  &:hover {
-    background-color: white;
-    color: black;
-    scale: 1.05;
-  }
-`;
 export default LoginPage;

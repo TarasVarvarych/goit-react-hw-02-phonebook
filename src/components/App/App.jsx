@@ -7,10 +7,14 @@ import { PrivateRoute } from 'components/Routes/PrivateRoute';
 import { RestrictedRoute } from 'components/Routes/RestrictedRoute';
 import { useAuth } from 'hooks/useAuth';
 import { Loader } from 'components/Loader/Loader';
-const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
-const LoginPage = lazy(() => import('../../pages/LoginPage'));
-const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
-const HomePage = lazy(() => import('../../pages/HomePage'));
+const ContactsPage = lazy(() =>
+  import('../../pages/ContactsPage/ContactsPage')
+);
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() =>
+  import('../../pages/RegisterPage/RegisterPage')
+);
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 
 export function App() {
   const { isRefreshing, isFetching } = useAuth();

@@ -10,7 +10,7 @@ import {
   handleRejected,
   updateContact,
   handleUpdateFullfiled,
-} from '../contactsAPI';
+} from '.';
 
 const initialState = {
   items: [],

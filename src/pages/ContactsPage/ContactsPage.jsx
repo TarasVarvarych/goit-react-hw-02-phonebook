@@ -1,7 +1,7 @@
 import { ContactForm } from 'components/PhoneBook/ContactForm/ContactForm';
 import { Contacts } from 'components/PhoneBook/Contacts/Contacts';
 import { Filter } from 'components/PhoneBook/Filter/Filter';
-import styled from 'styled-components';
+import { ContactsTitle } from './ContactsPage.styled';
 
 function ContactsPage() {
   return (
@@ -13,10 +13,5 @@ function ContactsPage() {
     </>
   );
 }
-
-const ContactsTitle = styled.h2`
-  letter-spacing: 0.4rem;
-  font-family: serif;
-`;
 
 export default ContactsPage;

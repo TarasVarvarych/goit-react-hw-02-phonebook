@@ -1,5 +1,5 @@
 import { useAuth } from 'hooks/useAuth';
-import styled from 'styled-components';
+import { HeroTitle, HomePageText } from './HomePage.styled';
 
 function HomePage() {
   const { isLoggedIn, user } = useAuth();
@@ -19,12 +19,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-const HeroTitle = styled.h1`
-  letter-spacing: 0.4rem;
-  font-family: serif;
-`;
-
-const HomePageText = styled.p`
-  font-size: 20px;
-`;
