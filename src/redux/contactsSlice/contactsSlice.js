@@ -8,6 +8,8 @@ import {
   handlePending,
   handleAddFulfilled,
   handleRejected,
+  updateContact,
+  handleUpdateFullfiled,
 } from '../contactsAPI';
 
 const initialState = {
@@ -31,7 +33,10 @@ const contactsSlice = createSlice({
 
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, handleDeleteFulfilled)
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(updateContact.pending, handlePending)
+      .addCase(updateContact.fulfilled, handleUpdateFullfiled)
+      .addCase(updateContact.rejected, handleRejected);
   },
 });
 
