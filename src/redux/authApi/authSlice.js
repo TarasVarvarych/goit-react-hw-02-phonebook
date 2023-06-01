@@ -12,7 +12,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
-  isLoading: false,
+  isFetching: false,
 };
 const authSlice = createSlice({
   name: 'auth',
@@ -27,7 +27,7 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, handleAuthRejected)
       .addCase(logOut.pending, handleAuthPending)
       .addCase(logOut.fulfilled, state => {
-        state.isLoading = false;
+        state.isFetching = false;
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
@@ -37,7 +37,6 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;

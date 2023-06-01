@@ -25,6 +25,7 @@ export const ContactItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 `;
 
 export const ContactName = styled.span`
@@ -47,4 +48,14 @@ export const ChangeButton = styled.button`
     color: #fff;
     scale: 1.05;
   }
+`;
+
+export const ContactInput = styled.input`
+  width: 150px;
+  background-color: #7da2a9;
+  border-radius: 5px;
+  border: transparent;
+  outline: none;
+  padding: 5px;
+  font-size: 20px;
 `;

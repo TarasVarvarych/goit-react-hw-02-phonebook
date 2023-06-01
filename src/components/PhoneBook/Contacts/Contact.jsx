@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   ChangeButton,
+  ContactInput,
   ContactItem,
   ContactName,
   DeleteButton,
@@ -39,13 +40,13 @@ export function Contact({ name, number, id }) {
     <ContactItem>
       {isEdit && id === targetId ? (
         <>
-          <input
+          <ContactInput
             type="text"
             name="name"
             onChange={handleChangeContact}
             value={contactName}
           />
-          <input
+          <ContactInput
             type="number"
             name="number"
             onChange={handleChangeContact}
