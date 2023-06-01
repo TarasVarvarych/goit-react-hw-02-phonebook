@@ -2,9 +2,12 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FormInput, FormLabel, LogInBtn, LoginForm } from './LoginPage.styled';
 import { logIn } from 'redux/authApi';
+import { useAuth } from 'hooks/useAuth';
+import { Loader } from 'components/Loader/Loader';
 
 function LoginPage() {
   const dispatch = useDispatch();
+  const { isFetching } = useAuth();
   const handleLogInFormSubmit = e => {
     e.preventDefault();
     const { email, password } = e.target.elements;
@@ -13,6 +16,7 @@ function LoginPage() {
   };
   return (
     <>
+      {isFetching && <Loader />}
       <LoginForm onSubmit={handleLogInFormSubmit}>
         <FormLabel>
           Login

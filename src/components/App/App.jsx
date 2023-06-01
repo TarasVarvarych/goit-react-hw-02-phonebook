@@ -16,13 +16,13 @@ const RegisterPage = lazy(() =>
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 
 export function App() {
-  const { isRefreshing, isFetching } = useAuth();
+  const { isRefreshing } = useAuth();
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return isRefreshing || isFetching ? (
+  return isRefreshing ? (
     <Loader />
   ) : (
     <Routes>
