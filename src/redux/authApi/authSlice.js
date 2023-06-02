@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { logIn, logOut, refreshUser, signUp } from './operations';
 import {
   handleAuthFullfiled,
@@ -19,20 +19,13 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(signUp.pending, handleAuthPending)
-      .addCase(signUp.fulfilled, handleAuthFullfiled)
-      .addCase(signUp.rejected, handleAuthRejected)
-      .addCase(logIn.pending, handleAuthPending)
-      .addCase(logIn.fulfilled, handleAuthFullfiled)
-      .addCase(logIn.rejected, handleAuthRejected)
-      .addCase(logOut.pending, handleAuthPending)
+
       .addCase(logOut.fulfilled, state => {
         state.isFetching = false;
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(logOut.rejected, handleAuthRejected)
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
@@ -44,7 +37,19 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.payload;
-      });
+      })
+      .addMatcher(
+        isAnyOf(signUp.pending, logIn.pending, logOut.pending),
+        handleAuthPending
+      )
+      .addMatcher(
+        isAnyOf(signUp.fulfilled, logIn.fulfilled),
+        handleAuthFullfiled
+      )
+      .addMatcher(
+        isAnyOf(signUp.rejected, logIn.rejected, logOut.rejected),
+        handleAuthRejected
+      );
   },
 });
 
