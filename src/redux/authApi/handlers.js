@@ -1,11 +1,11 @@
 export const handleAuthPending = state => {
   state.isFetching = true;
 };
-export const handleAuthFullfiled = (state, action) => {
+export const handleAuthFullfiled = (state, { payload }) => {
   state.isFetching = false;
   state.isLoggedIn = true;
-  state.user = action.payload.user;
-  state.token = action.payload.token;
+  state.user = payload.user;
+  state.token = payload.token;
 };
 
 export const handleAuthRejected = (state, { payload }) => {
