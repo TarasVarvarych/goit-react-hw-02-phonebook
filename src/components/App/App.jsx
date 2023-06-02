@@ -14,6 +14,9 @@ const RegisterPage = lazy(() =>
   import('../../pages/RegisterPage/RegisterPage')
 );
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const NotFoundPage = lazy(() =>
+  import('../../pages/NotFoundPage/NotFoundPage')
+);
 
 export function App() {
   const { isRefreshing } = useAuth();
@@ -49,6 +52,7 @@ export function App() {
             />
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
