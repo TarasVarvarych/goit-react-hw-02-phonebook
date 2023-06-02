@@ -19,7 +19,6 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-
       .addCase(logOut.fulfilled, state => {
         state.isFetching = false;
         state.user = { name: null, email: null };
